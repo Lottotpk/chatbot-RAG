@@ -1,0 +1,109 @@
+document_index,question,answer,llm_ans,similarity
+0,What do keybullet kin drop?,Keybullet kin drop a key upon death.,Keybullet Kin drop a key upon death.,0.9999999403953552
+0,What kind of gun does the bandana bullet kin use?,The bandana bullet kin wields a machine pistol.,Bandana Bullet Kin wield Machine Pistols.,0.8816242218017578
+1,What do the giants look like?,"One giant is burly, grey-skinned, and 20 feet tall. It wears heavy dark iron armour covered in metal torns. It is leaning against a chamber wall, carrying what looks to be two tower shields nearly as tall as itself, both bearing
+menacing spikes.
+
+The other giant  stands a tall giant in more mobile iron, clutching a dangerous-looking maul the size of Yasha, also leaning and looking disinterested.",I don’t know.,0.024366077035665512
+1,What happens on day 2?,"After a few miles of winding tunnel, you emerge in a smaller grotto of stalactites and stalagmites dripping with condensation. Unsure if the same underground river, or another water source, is nearby, you can see quite a bit of ground water does funnel down into this area.
+
+You encounter 2 ropers seeking the next burrowed entrance left by the Kryn.",Day 2 – Rop,0.16882255673408508
+2,What were the requirements for the project?,"The tool had the following requirements:
+- Chatbot that you can ask questions and get answers in response (conversational memory is not required).
+- Information is taken from an unstructured text file.
+- It must be able to tell me if it doesn’t know the answer to my question.
+- Fast.
+- Efficient enough to run on my MacBook with other programs without any performance issues.
+- Locally run for privacy and to ensure it will always be free, runnable, and consistent.","The requirements for the project were simple: it needed to be lightweight, locally runnable on a laptop, fast, and compatible with the MacBook.",0.44607576727867126
+2,What data did was used to test the prototype?,Grace Hopper's Wikipedia page and Alan Turing's Wikipedia page were used to test the prototype.,The prototype was tested using Grace Hopper’s Wikipedia page as its vector DB and Alan Turing’s Wikipedia page as its vector DB.,0.8432583808898926
+3,How do the data storage options compare?,"For fast start: use SQLite3 and ChromaDB (File-based) out-of-the-box - no install required.
+For speed + scale: use MongoDB (text collection) and Milvus (vector db) - install with Docker Compose
+For postgres: use Postgres for both text collection and vector DB - install with Docker Compose
+For mix-and-match: LLMWare supports 3 text collection databases (Mongo, Postgres, SQLite) and 10 vector databases (Milvus, PGVector-Postgres, Neo4j, Redis, Mongo-Atlas, Qdrant, Faiss, LanceDB, ChromaDB and Pinecone).","Here's a breakdown of the data storage options as described in the document:
+
+*   **SQLite3:** Used for Data Store Options.
+*   **ChromaDB:** File-based.
+*   **MongoDB:** Text collection.
+*   **Milvus:** Vector database.
+*   **Postgres:** Text collection and vector database.
+*   **Redis:** Vector database.
+*   **LanceDB:** Vector database.
+*   **Qdrant:** Vector database.
+*   **Faiss:** Vector database.
+*   **Pinecone:** Vector database.
+*   **Mongo Atlas Vector Search:** Vector database.
+*   **Neo4j:** Vector database.
+*   **Open Chat:** Vector database (compatible with OpenAI API).
+*   **Google Colab:**  (Implied, as it's an optional option)
+
+I don't know how the data storage options compare.",0.5725404620170593
+3,When was UTF-8 support added for European languages?,UTF-8 support was added for European languages on Wednesday 3rd April in the v0.2.7 Update.,I don't know.,0.002221994334831834
+4,How do I make a button?,"import marimo as mo
+
+button = mo.ui.run_button()
+button
+
+mo.stop(not button.value, ""Click 'run' to generate a random number"")
+
+import random
+random.randint(0, 1000).","Here’s how you can make a button using the provided documentation:
+
+You can create a button using the following steps:
+
+1.  **Create a button:** Use the `mo.ui.button()` function to create a button with a label and a click handler.
+2.  **Set the value:**  Set the button's value to 0 initially.
+3.  **Increment the value:** Increment the button's value on every click.
+4.  **Get the value:** Use `button.value` to retrieve the current value of the button.
+5.  **Toggle the button:** Use `mo.ui.button()` to create a toggle button.
+6.  **Implement a state:** Use `mo.state()` to store the index of the clicked button.
+7.  **Create an array of buttons:** Create an array of `mo.ui.button()` objects.
+8.  **Add buttons to the array:** Populate the array with buttons.
+9.  **Get the state value:** Use `get_state()` to get the state of the array.
+10. **Arrange buttons in a table column:** Use `mo.ui.array()` to create an array of buttons and arrange them in a table column.
+11. **Execute side-effects:** Use `mo.hstack()` to arrange buttons in a column.
+12. **Get the state value:** Use `get_state()` to get the state of the table.",0.5522848963737488
+4,When might I use caching?,"You might use caching when, for example, your notebook computes t-SNE, UMAP, or PyMDE embeddings.","When might I use caching?
+
+The document states that caching function outputs given inputs will be used when the parameters are the same. It also mentions using functools to cache function outputs.",0.5746719837188721
+5,What are the key topics of this article?,"The key topics of this article are: ""why prioritizing impact matters not just for managers, but also ICs""; ""why focusing on impact is hard""; ""how to maximize your impact""; and ""how to overcome common challenges in driving real impact"".","The key topics of this article are:
+
+*   The importance of focusing on impact rather than simply understanding an issue.
+*   Why prioritizing impact is hard, and how to overcome common challenges in driving real impact.
+*   How to minimize wasted time on projects that won’t lead to impact.
+*   Warning signs of “academic” projects that are a waste of time.
+*   The dangers of overly ambitious project scopes, exemplified by Uber’s desire to determine the “best” driver incentive type.",0.6917329430580139
+5,Do I have to do something all by myself to be acknowledged for it?,"You don’t have to be solely responsible for something in order to take (partial) credit for it. If you provided the analysis that resulted in a pricing change that saved the company millions, then you deserve part of the credit for that impact.",I don’t know.,0.0038685130421072245
+6,What kinds of models would need to be officially registered?,"High-risk AI systems that are deployed by public authorities or entities acting on their behalf will have to be registered in a public EU database, unless those systems are used for law enforcement and migration. The latter will have to be registered in a non-public part of the database that will be only accessible to relevant supervisory authorities.","Providers of general-purpose AI models would need to officially register.
+
+Specifically, they would need to ensure the foreign provider has already carried out the appropriate conformity assessment procedure, bears a European Conformity (CE) marking, and is accompanied by the required documentation and instructions of use.",0.7018209099769592
+6,"What kinds of AI carry ""systematic risks""?","For now, general purpose AI models that were trained using a total computing power of more than 10^25 FLOPs are considered to carry systemic risks, given that models trained with larger compute tend to be more powerful. The AI Office (established within the Commission) may update this threshold in light of technological advances, and may furthermore in specific cases designate other models as such based on further criteria (e.g. number of users, or the degree of autonomy of the model).","According to the document, “powerful models could cause serious accidents or be misused for far-reaching cyberattacks.”",0.7026839852333069
+7,Which quest does the emperor give the player?,"The emperor gives the player the ""Visit the Emperor's Old Hideout"" quest.",Visit the Emperor's Old Hideout.,0.6828445792198181
+7,Who ambushes the party at Wyrm's lookout?,"On the way to Baldur's Gate, the party will be ambushed by a group of Gish'ra warriors while resting at Wyrm's Lookout.",A group of Gish'ra warriors.,0.552727460861206
+8,What did I drink at the pintxo bars?,You drank txakoli at the pintxo bars.,Txakoli.,0.6119257211685181
+8,Which part of the trip did I like the most?,Your favourite part of the trip was your four days on the Camino.,I don't know.,-0.07128787040710449
+9,What is the meaning behind the infrared scenes?,"The significance of the use of infrared might be in stating how the Polish family cannot be themselves as soon as they step out of their house or into the open balcony as well. Although the girl takes on the dangerous responsibility of helping the prisoners, she still cannot express her true self in public, leading to her being shown in infrared. Another perspective is that the girl and her mother truly stand out in this horrific world solely because of their generous actions. Therefore, in a film like this, in which the Nazis and the enablers are the “normal” people, anyone with any sense of humanity has to be visually differentiated from the Hoss family members.",The infrared scenes signify how the family cannot be themselves as soon as they step out of their house or into the open balcony as well. They also suggest that the family also have to work as collaborators for the Nazis to a certain degree.,0.7923555970191956
+9,How do the people who commit atrocious acts and those that are complicit in these acts differ?,The Zone of Interest does not really differentiate between evil-doers and those supporting such evil.,"The document doesn’t differentiate between people who commit atrocious acts and those that are complicit in these acts. It states that Rudolf is definitely in the first category, as he clearly enjoys the torture and killing of people.",0.4615815579891205
+10,What is the policy on Tai Chi?,"In order to calm down the passions and stresses currently exhibited in Parliament, the Loony Party would make all M.P’s have half an hours compulsory Tai chi everyday.",The Loony Party would make all M.P’s have half an hours compulsory Tai chi everyday.,0.8765596151351929
+10,What is the proposed change for the British museum,The British Museum should have a Daddy’s section alongside the current Mummy exhibition.,The British Museum should have a Daddy’s section alongside the current Mummy exhibition.,1.0
+11,How much faster is the Tesla A100 compared to the Tesla V100?,"When measured on the SE-ResNeXt101 deep learning architecture, the Tesla A100 was 1.43x faster than the Tesla V100. When measured on the Masked-R-CNN deep learning architecture the Tesla A100 was 1.47x faster than the Tesla V100. When measured on the Transformer (12 layer, Machine Translation, WMT14 en-de) deep learning architecture, the Tesla A100 was 1.70x faster than the Tesla V100.","The Tesla A100 offers the following speedup over the Tesla V100:
+
+*   SE-ResNeXt101: 1.43x
+*   Masked-R-CNN: 1.47x
+*   Transformer (12 layer, Machine Translation, WMT14 en-de): 1.70x",0.8994604349136353
+11,For what work did I receive criticism for my reduction of FLOPS?,You received criticism for your research on sparse network training.,I received criticism for reducing the FLOPS required for the network because GPUs cannot do fast sparse matrix multiplication.,0.5457708239555359
+12,How does function exporting differ between Gleam and Python?,"In Python, top level functions are exported by default. There is no notion of private module-level functions. In Gleam, functions are private by default and need the pub keyword to be public.",I don't know.,0.036074358969926834
+12,What is the syntax for pipe,The operator for Pipe in Gleam is '|>'.,Pipe	 	|>	Gleam’s pipe can pipe into anonymous functions. This operator does not exist in python.,0.8011445999145508
+13,Why are the top-right values in the raw attention weights set to negative infinity?,A mask of negative infinity is applied to the upper right entries of the raw attention weights to ensure they will zero out after softmax.,The top-right values in the raw attention weights are set to negative infinity. This ensures that future tokens will not be included in the representation of a given token. This ensures that tokens can only communicate with the previous tokens because during generation the model will only have access to previous tokens.,0.6772935390472412
+13,How can I freeze a variable during training in MLX?,"To freeze an attribute during training, you can add '_' as a prefix to the attribute name, which signals to mlx that it is not a parameter and should not be updated during training.",I don't know.,-0.07882728427648544
+14,How is the narrator related to Perry,Perry is the narrator's brother.,The narrator is Perry’s older sister.,0.8475720882415771
+14,How long has the narrator been sober for?,The author had been sober for seven hundred and thirty days.,Seven hundred and thirty days.,0.6002774238586426
+15,What is the name of the space station?,"The space station is called ""Babystation Beta"".",The name of the space station is Nan-E.,0.6754072904586792
+15,What languages do the people of Pacifico del Rio speak?,All of the humans speak a single language that is similar to Cantonese.,"The document states that humans all speak one language by this point. However, the Tardis translates. It’s got a perception filter, so it helps you fit into every time and place.",0.416862815618515
+16,In which patch was pet adoption added?,The ability to adopt pets from Marnie's shop from year two was added in patch 1.6.3.,Pet adoption was added in the 1.06 patch.,0.7332167625427246
+16,When did mushroom trees stop dropping wood?,Mushrrom trees stopped dropping wood in patch 1.4.0.,I don't know.,0.030871545895934105
+17,Where was Alan Wake 2 officially announced?,Alan Wake 2 was officially announced at The Game Awards 2021.,"Alan Wake 2 was officially announced on Sony hosted a PlayStation Showcase livestream on June 8, 2023.",0.8662841320037842
+17,When is this game set?,"This game is set in 2023, thirteen years after the events of Alan Wake.",The game is set in December 2023.,0.6897279620170593
+18,Who wrote 'Divine Rivals'?,Rebecca Ross wrote 'Divine Rivals'.,I don’t know.,0.06885737180709839
+18,Who was resurrected with a group of other murder victims?,Lou was resurrected along with a handful of other women murdered by a single serial killer.,Lou and her fellow victims.,0.6329087018966675
+19,What categories does this paper split the RAG technique paradigm into?,"This paper organizes the RAG paradigm into four categories: pre-retrieval, retrieval, post-retrieval, and generation.","The paper splits the RAG technique paradigm into four categories: pre-retrieval, retrieval, post-retrieval, and generation phases.",0.9205935001373291
+19,In what way can including unrelated documents affect the RAG system?,"Noise Power (Cuconasu et al., 2024) provide a comprehensive analysis of the impact of IR components on RAG systems, revealing that the inclusion of irrelevant documents can significantly improve accuracy.",I don't know.,0.008634854108095169

@@ -1,0 +1,77 @@
+import pandas as pd
+import torch
+import nltk
+from sentence_transformers import SentenceTransformer
+from vectordb import VectorDB
+nltk.download("punkt_tab")
+
+device = "cuda" if torch.cuda.is_available() else "cpu"
+model_embed = SentenceTransformer("all-mpnet-base-v2", device = device)
+
+# chunk_size and chunk_overlap may need to change here for better context
+def txt_chunk(txt: str, chunk_size: int = 512, chunk_overlap: int = 100) -> list:
+    chunk_list = []
+    sen_list = nltk.sent_tokenize(txt)
+    word_len = 0
+    chunk = ""
+    overlap = ""
+    flag1 = True
+    flag2 = True
+
+    for word in sen_list:
+        if flag1:
+            chunk += word
+            flag1 = False
+        else:
+            chunk += " " + word
+            word_len += 1
+        word_len += len(word)
+        if word_len > chunk_size - chunk_overlap:
+            if flag2:
+                overlap += word
+                flag2 = False
+            else:
+                overlap += " " + word
+        if word_len > chunk_size:
+            chunk_list.append(chunk)
+            chunk = overlap + " "
+            word_len = len(overlap) + 1
+            overlap = ""
+            flag1 = True
+            flag2 = True
+    if chunk != "":
+        chunk_list.append(chunk)
+    return chunk_list 
+
+
+def chunk_embed(chunk_list: list) -> torch.Tensor:
+    return model_embed.encode(chunk_list, convert_to_tensor = True)
+
+
+def query_retrieval(query: str, 
+                    vectordb: VectorDB, 
+                    model: SentenceTransformer = model_embed,
+                    top_k: int = 5) -> list:
+    query_vector = model.encode(query, convert_to_tensor = True)
+    return vectordb.get_topk_similar(query_vector, top_k)
+
+
+def main():
+    df = pd.read_csv("./dataset/documents.csv")
+    vectordb = VectorDB()
+
+    for i, txt in enumerate(df["text"]):
+        chunk = txt_chunk(txt)
+        embedded_vector = chunk_embed(chunk)
+        for id, vec in zip(chunk, embedded_vector):
+            print(f"adding {id[:30]}... to vector database")
+            vectordb.add_vector(id, vec, (i, df.iloc[i]["source_url"]))
+        print(f"Document {i} successfully embedded")
+    
+    print(f"Saving to json...")
+    vectordb.save_to_json()
+    print(f"Saving successful")
+
+
+if __name__ == "__main__":
+    main()
