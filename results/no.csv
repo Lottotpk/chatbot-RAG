@@ -1,41 +1,54 @@
 document_index,question,llm_ans
-0,How much health does the Mutant Bullet Kin have?,I don't know.
-0,Where can bishops be found?,I don't know.
-1,What happened on day 10?,I don't know.
-1,What did the goblins say?,“Loud food! Loud meal!”
-2,Why was the H100 GPU chosen for computation?,The document doesn’t state why the H100 GPU was chosen for computation. It focuses on the limitations of the MacBook’s memory and the potential bottleneck with larger models.
+0,How much health does the Mutant Bullet Kin have?,"Mutant Bullet Kin behave like regular Bullet Kin, but have higher health. I don’t know."
+0,Where can bishops be found?,"According to the document, cardinals can be seen in the first floor, tending to a small cemetery filled with gravestones."
+1,What happened on day 10?,Day 1 goes without issue… sleep.
+1,What did the goblins say?,"“Loud food! Loud meal!”
+“You! Give us stuffs! Give us foods! Drop things you have, or we stab stab!”
+“You! Bring ingoeth! In and out, gone quick, leave mess!”"
+2,Why was the H100 GPU chosen for computation?,The document doesn’t explicitly state why the H100 GPU was chosen for computation. It only mentions that it’s “well known for improving speed and memory usage with little loss in accuracy in return.”
 2,Which masked language model was chosen for the AI?,I don’t know.
 3,When was GPT 4 made available,I don't know.
 3,What Tensorflow features are supported?,I don't know.
-4,How can I create graphs?,I don't know.
-4,What is the name of the Java version of marimo?,I don’t know.
+4,How can I create graphs?,I don’t know.
+4,What is the name of the Java version of marimo?,I don't know.
 5,What is step 5?,I don’t know.
 5,What is the advice for data scientists in finance companies?,I don’t know.
-6,What obligations are robots expected to follow?,I don't know.
-6,How long are the minimum prison sentences for rule breakers?,I don't know.
-7,What needs to be done to kiss the Emperor?,I don't know.
-7,How many wings did Balduran have?,I don't know.
+6,What obligations are robots expected to follow?,"According to the document, robots are expected to follow the transparency obligations for certain AI systems. Additionally, the revised Product Liability Directive will ensure compensation is available for defective products caused by AI systems, and that AI systems and products that integrate AI systems are also covered by existing rules."
+6,How long are the minimum prison sentences for rule breakers?,I don’t know.
+7,What needs to be done to kiss the Emperor?,I don’t know.
+7,How many wings did Balduran have?,I don’t know.
 8,What is the author's favourite thing about Barcelona?,I don’t know.
 8,Did the author prefer Madrid or San Sebastian?,I don’t know.
 9,Who plays the boy in striped pyjamas?,I don’t know.
-9,What relgion are the members of the Hoss family?,I don't know.
-10,What is the policy on semi-skimmed milk?,I don't know.
-10,What kind of pumps will be given to people to solve inflation?,I don't know.
-11,Which TPU is recommended?,I don't know.
-11,What is the rest temperature of the RTX 4090 GPU?,I don’t know.
-12,What does the ++ operator do in Gleam?,I don't know.
-12,How do sets in Python compare to sets in Gleam?,I don't know.
+9,What relgion are the members of the Hoss family?,I don’t know.
+10,What is the policy on semi-skimmed milk?,I don’t know.
+10,What kind of pumps will be given to people to solve inflation?,Free pins.
+11,Which TPU is recommended?,"The document states that TPUs have very, very, large tiles for each Tensor Core. As such, TPUs can reuse much more memory with each transfer from global memory, which makes them a little bit more efficient at matrix multiplications than GPUs."
+11,What is the rest temperature of the RTX 4090 GPU?,The document doesn’t provide the rest temperature of the RTX 4090 GPU.
+12,What does the ++ operator do in Gleam?,I don’t know.
+12,How do sets in Python compare to sets in Gleam?,The document doesn’t explicitly compare sets in Python to sets in Gleam. It only states that sets in Python are short-circuiting and can be overloaded. It also mentions that sets in Python are immutable.
 13,How many parameters does the transformer model have?,I don't know.
-13,What is the advantage of transformers other other models?,The document states that transformers allow models to learn more complex representations because each head learns different projections and attention weights. It also mentions that multi-head attention allows the model to learn more complex representations by concatenating their outputs.
-14,What brand of bourbon did the narrator drink?,I don't know.
-14,Who is Perry and Jackie's sibling?,Perry is Perry’s brother. Jackie’s sibling.
+13,What is the advantage of transformers other other models?,"According to the document, transformers have the advantage of allowing gradients to flow backwards freely, which prevents issues like vanishing/exploding gradients that plague deep networks."
+14,What brand of bourbon did the narrator drink?,I don’t know.
+14,Who is Perry and Jackie's sibling?,Perry and Jackie’s sibling.
 15,What colour is Nan-E?,I don’t know.
-15,"What does Robby, the baby, say to the Doctor?",Robby says “And me!”
+15,"What does Robby, the baby, say to the Doctor?","Robby says “No, listen to me. Listen to me.”"
 16,In what version was the velociraptor introduced?,I don’t know.
-16,What was added in version 1.5.7?,I don't know.
-17,Why did Saga stab Scratch?,"Saga stabbed Scratch because Scratch possessed Casey, and Scratch stole the Clicker."
+16,What was added in version 1.5.7?,"Version 1.5.7 added the following:
+
+*   Fixed items able to have a null Name or DisplayName in 1.6.
+*   The about page no longer hides the version if a tip message is shown.
+*   The order that you'll get forge enchantments is now unique per player rather than per farm.
+*   Pan no longer yields the same thing if you pan in the same spot twice in a day.
+*   Fixed widescreen and UHD displays not handled correctly.
+*   Fixed crash in the French localization for the ""It Howls In The Rain"" movie.
+*   Further changes were later released without changing the version number:
+    *   3 December 2021 (announcement)
+    *   Fixed exploit where Qi beans/fruit weren't removed from Marlon's item recovery service after the challenge expires.
+    *   Fixed a multiplayer fishing softlock added in 1.5.3."
+17,Why did Saga stab Scratch?,Saga stabbed Scratch because he possessed Casey instead of Alan.
 17,What caliber is the bullet of light?,I don't know.
 18,"In 'he who drowned the world', why did Gong Li sacrifice her brother?",I don’t know.
-18,Which book is the best?,I don't know.
-19,Which paper by Hinton et. al. was used in this paper?,I don't know.
-19,Why was hardware such a limiting factor in this research?,I don't know.
+18,Which book is the best?,I don’t know.
+19,Which paper by Hinton et. al. was used in this paper?,Hinton et al. 2017. Attention is All.
+19,Why was hardware such a limiting factor in this research?,"According to the document, hardware was a limiting factor because it restricted their ability to incorporate new information post-training, leading to three primary challenges."

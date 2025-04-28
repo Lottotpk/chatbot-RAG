@@ -1,6 +1,7 @@
 from transformers import AutoTokenizer, BitsAndBytesConfig, Gemma3ForCausalLM
 from vectordb import VectorDB
 from sentence_transformers import SentenceTransformer
+from guardrails import detect_appropriate
 import torch
 import pandas as pd
 
@@ -42,8 +43,9 @@ QUESTION:
 
 INSTRUCTIONS:
 Answer the users QUESTION using the DOCUMENT text above.
+Please take your time, read, and interpret everything carefully.
 Keep your answer ground in the facts of the DOCUMENT.
-If you don't know the answer, don't try to make up an answer. Just say I don't know.
+If you cannot find the answer to the question, just say I don't know.
 """
     return prompt
 
@@ -56,7 +58,12 @@ def output_clean(input_text: str, answer: str) -> str:
     return answer
 
 
-def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5) -> tuple:
+def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5, guard: bool = False) -> tuple:
+    if guard and not detect_appropriate(input_text):
+        answer = "Sorry, I cannot provide an answer because the question contains inappropriate topics."
+        print(f"Answer:\n{answer}")
+        return (answer, None)
+
     embedded_text = model_embed.encode(input_text, convert_to_tensor = True)
     retrieved = []
     if doc_id is not None:
@@ -84,9 +91,9 @@ def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5) ->
     with torch.inference_mode():
         outputs = model.generate(**inputs, 
                                  max_new_tokens=512,
-                                 temperature=0.7)
-    
+                                 temperature=0.5)
     outputs = tokenizer.batch_decode(outputs)
+    # print(input_text)
     answer = output_clean(input_text, outputs[0])
 
     source = "Relevant source(s) in order:\n"
@@ -125,8 +132,6 @@ def evaluate_answer():
     df["llm_ans"] = pd.Series()
     df["similarity"] = pd.Series()
     for i in range(len(df)):
-        if i % 5 == 0:
-            print(f"Done answering {i} questions")
         query, doc_id = df.iloc[i]["question"], df.iloc[i]["document_index"]
         llm_ans, _ = ask(query, doc_id, False)
         df.at[i, "llm_ans"] = llm_ans
@@ -137,6 +142,8 @@ def evaluate_answer():
         vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
         df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
                     (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
+        if i % 5 == 0:
+            print(f"Done answering {i} questions")
     df.to_csv("./results/multi.csv", index = False)
 
     df = pd.read_csv("./dataset/no_answer_questions.csv")
@@ -152,7 +159,7 @@ def evaluate_answer():
 
 def main():
     input_text = input("Enter the question here: ")
-    ask(input_text)
+    ask(input_text, guard = True)
 
 
 if __name__ == "__main__":
