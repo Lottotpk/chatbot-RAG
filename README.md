@@ -35,4 +35,7 @@ You need to get the API key from the website in order to get access to huggingfa
 ```
 python main.py
 ```
-Note that this script only answer 1 question at a time and no follow-up questions feature has not implemented yet.
+
+## Final thoughts
+- Note that this script only answer 1 question at a time and no follow-up questions feature has not implemented yet. 
+- You can use a better LLM model because this repo only use 1B parameters pretrained model (not enough GPU to run any bigger model...).
