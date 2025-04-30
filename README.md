@@ -31,6 +31,7 @@ pip install -r requirements.txt
 huggingface-cli login
 ```
 You need to get the API key from the website in order to get access to huggingface and LLM models.
+
 3. To chat with the chatbot, run
 ```
 python main.py
