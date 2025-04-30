@@ -9,7 +9,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 model_embed = SentenceTransformer("all-mpnet-base-v2", device = device)
 
 # chunk_size and chunk_overlap may need to change here for better context
-def txt_chunk(txt: str, chunk_size: int = 150, chunk_overlap: int = 30) -> list:
+def txt_chunk(txt: str, chunk_size: int = 128, chunk_overlap: int = 16) -> list:
     chunk_list = []
     sen_list = nltk.sent_tokenize(txt)
     word_len = 0

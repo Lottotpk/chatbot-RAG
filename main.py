@@ -35,17 +35,13 @@ print("Vector database successfully retrieved.")
 
 def prompt_format(query: str, retrieved_context: list) -> str:
     formatted_cntxt =  "- " + "\n- ".join(ctxt[0] for ctxt in retrieved_context)
-    prompt = f"""DOCUMENT:
+    prompt = f"""Use the following pieces of context to answer the question at the end.
+Pay attention to the context of the question rather than just looking for similar keywords in the corpus.
+If the context doesn't provide enough information, just say that you don't know, don't try to make up an answer.
+Use five sentences maximum and keep the answer as concise as possible.
 {formatted_cntxt}
-
-QUESTION:
-{query}
-
-INSTRUCTIONS:
-Answer the users QUESTION using the DOCUMENT text above.
-Please take your time, read, and interpret everything carefully.
-Keep your answer ground in the facts of the DOCUMENT.
-If you cannot find the answer to the question, just say I don't know.
+Question: {query}
+Answer:
 """
     return prompt
 
@@ -93,7 +89,7 @@ def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5, gu
                                  max_new_tokens=512,
                                  temperature=0.5)
     outputs = tokenizer.batch_decode(outputs)
-    # print(input_text)
+
     answer = output_clean(input_text, outputs[0])
 
     source = "Relevant source(s) in order:\n"
@@ -112,7 +108,7 @@ def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5, gu
 def evaluate_answer():
     df = pd.read_csv("./dataset/single_passage_answer_questions.csv")
     df["llm_ans"] = pd.Series()
-    df["similarity"] = pd.Series()
+    # df["similarity"] = pd.Series()
     for i in range(len(df)):
         if i % 5 == 0:
             print(f"Done answering {i} questions")
@@ -121,27 +117,27 @@ def evaluate_answer():
         df.at[i, "llm_ans"] = llm_ans
 
         # Calculate dot product similarity
-        actual_ans = df.iloc[i]["answer"]
-        vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
-        vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
-        df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
-                    (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
+        # actual_ans = df.iloc[i]["answer"]
+        # vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
+        # vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
+        # df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
+        #             (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
     df.to_csv("./results/single.csv", index = False)
 
     df = pd.read_csv("./dataset/multi_passage_answer_questions.csv")
     df["llm_ans"] = pd.Series()
-    df["similarity"] = pd.Series()
+    # df["similarity"] = pd.Series()
     for i in range(len(df)):
         query, doc_id = df.iloc[i]["question"], df.iloc[i]["document_index"]
         llm_ans, _ = ask(query, doc_id, False)
         df.at[i, "llm_ans"] = llm_ans
 
         # Calculate dot product similarity
-        actual_ans = df.iloc[i]["answer"]
-        vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
-        vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
-        df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
-                    (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
+        # actual_ans = df.iloc[i]["answer"]
+        # vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
+        # vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
+        # df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
+        #             (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
         if i % 5 == 0:
             print(f"Done answering {i} questions")
     df.to_csv("./results/multi.csv", index = False)
@@ -163,4 +159,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # main()
     evaluate_answer()

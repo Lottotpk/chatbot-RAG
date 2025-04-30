@@ -1,54 +1,49 @@
 document_index,question,llm_ans
-0,How much health does the Mutant Bullet Kin have?,"Mutant Bullet Kin behave like regular Bullet Kin, but have higher health. I don’t know."
-0,Where can bishops be found?,"According to the document, cardinals can be seen in the first floor, tending to a small cemetery filled with gravestones."
-1,What happened on day 10?,Day 1 goes without issue… sleep.
-1,What did the goblins say?,"“Loud food! Loud meal!”
-“You! Give us stuffs! Give us foods! Drop things you have, or we stab stab!”
-“You! Bring ingoeth! In and out, gone quick, leave mess!”"
-2,Why was the H100 GPU chosen for computation?,The document doesn’t explicitly state why the H100 GPU was chosen for computation. It only mentions that it’s “well known for improving speed and memory usage with little loss in accuracy in return.”
-2,Which masked language model was chosen for the AI?,I don’t know.
-3,When was GPT 4 made available,I don't know.
-3,What Tensorflow features are supported?,I don't know.
-4,How can I create graphs?,I don’t know.
-4,What is the name of the Java version of marimo?,I don't know.
-5,What is step 5?,I don’t know.
-5,What is the advice for data scientists in finance companies?,I don’t know.
-6,What obligations are robots expected to follow?,"According to the document, robots are expected to follow the transparency obligations for certain AI systems. Additionally, the revised Product Liability Directive will ensure compensation is available for defective products caused by AI systems, and that AI systems and products that integrate AI systems are also covered by existing rules."
-6,How long are the minimum prison sentences for rule breakers?,I don’t know.
-7,What needs to be done to kiss the Emperor?,I don’t know.
-7,How many wings did Balduran have?,I don’t know.
-8,What is the author's favourite thing about Barcelona?,I don’t know.
-8,Did the author prefer Madrid or San Sebastian?,I don’t know.
-9,Who plays the boy in striped pyjamas?,I don’t know.
-9,What relgion are the members of the Hoss family?,I don’t know.
-10,What is the policy on semi-skimmed milk?,I don’t know.
-10,What kind of pumps will be given to people to solve inflation?,Free pins.
-11,Which TPU is recommended?,"The document states that TPUs have very, very, large tiles for each Tensor Core. As such, TPUs can reuse much more memory with each transfer from global memory, which makes them a little bit more efficient at matrix multiplications than GPUs."
-11,What is the rest temperature of the RTX 4090 GPU?,The document doesn’t provide the rest temperature of the RTX 4090 GPU.
-12,What does the ++ operator do in Gleam?,I don’t know.
-12,How do sets in Python compare to sets in Gleam?,The document doesn’t explicitly compare sets in Python to sets in Gleam. It only states that sets in Python are short-circuiting and can be overloaded. It also mentions that sets in Python are immutable.
-13,How many parameters does the transformer model have?,I don't know.
-13,What is the advantage of transformers other other models?,"According to the document, transformers have the advantage of allowing gradients to flow backwards freely, which prevents issues like vanishing/exploding gradients that plague deep networks."
-14,What brand of bourbon did the narrator drink?,I don’t know.
-14,Who is Perry and Jackie's sibling?,Perry and Jackie’s sibling.
-15,What colour is Nan-E?,I don’t know.
-15,"What does Robby, the baby, say to the Doctor?","Robby says “No, listen to me. Listen to me.”"
-16,In what version was the velociraptor introduced?,I don’t know.
-16,What was added in version 1.5.7?,"Version 1.5.7 added the following:
+0,How much health does the Mutant Bullet Kin have?,The provided context does not state the Mutant Bullet Kin’s health.
+0,Where can bishops be found?,"Bishops can be found in the first floor of the Abbey & Hollow, tending to a small cemetery filled with gravestones. They are the only enemy in that room."
+1,What happened on day 10?,Day 10 goes without issue…sleep. Day 2 – Ropers reveals a smaller grotto of stalactites and stalagmites dripping with condensation.
+1,What did the goblins say?,"The goblins barked and growled when they saw the group, expressing fear. They demanded food and items, and threatened to stab if ignored. They also mentioned a tunnel and a worm that ate through. They were insistent on a quick departure, avoiding a direct confrontation."
+2,Why was the H100 GPU chosen for computation?,"The H100 GPU was chosen for computation because it’s known for improving speed and memory usage with little loss in accuracy, making it popular for production-level AI. It’s well-known for reducing data loading overhead costs and is excellent for reducing VRAM usage. Furthermore, it’s compatible with Apple’s M-series chips, which utilize Metal for GPU acceleration. Finally, the model layer loading and unloading becomes a bottleneck when larger models are loaded directly from the SSD, prompting the consideration of AirLLM as a potential alternative."
+2,Which masked language model was chosen for the AI?,The context doesn’t specify which masked language model was chosen. It focuses on the creation of a locally run RAG chatbot.
+3,When was GPT 4 made available,GPT 4 was not made available. The context focuses on model updates and releases for the GGUF Generative Model class.
+3,What Tensorflow features are supported?,"Tensorflow features supported include:
 
-*   Fixed items able to have a null Name or DisplayName in 1.6.
-*   The about page no longer hides the version if a tip message is shown.
-*   The order that you'll get forge enchantments is now unique per player rather than per farm.
-*   Pan no longer yields the same thing if you pan in the same spot twice in a day.
-*   Fixed widescreen and UHD displays not handled correctly.
-*   Fixed crash in the French localization for the ""It Howls In The Rain"" movie.
-*   Further changes were later released without changing the version number:
-    *   3 December 2021 (announcement)
-    *   Fixed exploit where Qi beans/fruit weren't removed from Marlon's item recovery service after the challenge expires.
-    *   Fixed a multiplayer fishing softlock added in 1.5.3."
-17,Why did Saga stab Scratch?,Saga stabbed Scratch because he possessed Casey instead of Alan.
-17,What caliber is the bullet of light?,I don't know.
-18,"In 'he who drowned the world', why did Gong Li sacrifice her brother?",I don’t know.
-18,Which book is the best?,I don’t know.
-19,Which paper by Hinton et. al. was used in this paper?,Hinton et al. 2017. Attention is All.
-19,Why was hardware such a limiting factor in this research?,"According to the document, hardware was a limiting factor because it restricted their ability to incorporate new information post-training, leading to three primary challenges."
+*   **TensorFlow 2.x:** Supports the latest TensorFlow 2.x releases, including TensorFlow 2.11, 2.12, and 2.13.
+*   **TensorFlow Lite:**  Supports TensorFlow Lite for mobile and embedded devices.
+*   **TensorFlow Hub:** Integration with TensorFlow Hub for pre-trained models and models.
+*   **TensorFlow Data API:**  Provides a data API for accessing data in various formats.
+*   **TensorFlow Serving:**  For deploying and serving TensorFlow models.
+*   **TensorFlow Graph Execution:**  Supports graph execution for optimized performance.
+*   **TensorFlow Extended (TFX):**  For building and deploying production-ready machine learning pipelines."
+4,How can I create graphs?,"To create graphs, you can load new data periodically and show updated plots or other outputs.  Use a job periodically to run a cell on a timer.  Control Flow allows you to show an output conditionally, using a boolean variable `condition`.  You can also hide an output until a condition is met, or display different outputs based on UI elements or other Python objects."
+4,What is the name of the Java version of marimo?,The context doesn’t specify the Java version of marimo.
+5,What is step 5?,Step 5: Focus your time on the highest-impact thing.
+5,What is the advice for data scientists in finance companies?,"Data scientists in finance companies should prioritize impact over simply tracking output metrics like “I launched 5 experiments.” Focusing on impact accelerates career growth and is crucial for managers and individual contributors alike. It’s challenging to establish yourself as a high performer when impact isn’t valued. To maximize impact, focus on driving tangible results and addressing key business challenges.  Ultimately, data scientists should prioritize delivering value to the organization."
+6,What obligations are robots expected to follow?,"Robots are expected to comply with transparency obligations for certain AI systems. The Commission encourages industry associations to adopt voluntary codes of conduct. The revised Product Liability Directive ensures compensation for defective products and clarifies that AI systems and products integrating AI systems are covered. A scientific panel oversees general-purpose AI models, and human-centric AI requires compliance with fundamental rights legislation. Providers of non-high-risk applications can ensure trustworthiness by developing their own codes of conduct or adopting those of other associations."
+6,How long are the minimum prison sentences for rule breakers?,The provided text does not specify the minimum prison sentences for rule breakers. It focuses on the thresholds for infringement and administrative fines.
+7,What needs to be done to kiss the Emperor?,"To kiss the Emperor, the player needs to choose dialogue options that generally treat the Emperor more like “any other person,” avoiding explicit hostility or showing a reaction to its actions. This is the primary way to unlock “romantic” options. The player’s choices in conversation will affect the Emperor’s attitude, reacting to how it was treated. The player can also complete the “Visit the Emperor’s Old Hideout” quest to gain a better understanding of the Emperor."
+7,How many wings did Balduran have?,The context doesn’t state how many wings Balduran had.
+8,What is the author's favourite thing about Barcelona?,The author’s favourite thing about Barcelona is not explicitly mentioned in the provided text. The text focuses on their experience in Bilbao and highlights the unique blend of old and new in the city.
+8,Did the author prefer Madrid or San Sebastian?,The author preferred San Sebastian. The text repeatedly states that San Sebastián is the “coolest town” and is worth a trip to Spain all on its own.
+9,Who plays the boy in striped pyjamas?,The context doesn’t specify who plays the boy in striped pyjamas. It focuses on the Hoss children’s activities and the chilling reality of their surroundings.
+9,What relgion are the members of the Hoss family?,"The Hoss family are Polish locals who have no interest in Nazi ideals. They dream of liberation and are still alive despite the horrors of the Holocaust. They are that of Rudolf Hoss, a notorious SS officer and commander of the Auschwitz concentration camp. Despite the inhumane conditions, they are accustomed to Auschwitz and cherish their time there."
+10,What is the policy on semi-skimmed milk?,The context does not mention the policy on semi-skimmed milk.
+10,What kind of pumps will be given to people to solve inflation?,Free pins will be given to people to solve inflation.
+11,Which TPU is recommended?,"The RTX 4070 Ti is most cost-effective for 8-bit and 16-bit inference, while the RTX 3080 remains most cost-effective for 16-bit training. CPUs with vendor experience are more important for 8x GPU systems than pure performance or cost-effectiveness. Threadrippers work well for 4x GPU systems, and the chart is effective in about 80% of cases."
+11,What is the rest temperature of the RTX 4090 GPU?,The context doesn’t provide information about the RTX 4090’s temperature. It only discusses how the RTX 3090 and RTX 2080 Ti Founders Edition GPUs perform with overheating.
+12,What does the ++ operator do in Gleam?,The `++` operator in Gleam performs integer addition. It adds the value of the left operand to the value of the right operand.
+12,How do sets in Python compare to sets in Gleam?,"Sets in Python and Gleam compare to sets in Gleam in that both allow for mixed data types. Gleam has a cons operator for list destructuring, allowing mixed types in collections. Sets in Gleam are immutable and efficient for adding and removing elements. Python uses exceptions for error management, while Gleam uses a more structured approach."
+13,How many parameters does the transformer model have?,The transformer model has a total of 100 million parameters.
+13,What is the advantage of transformers other other models?,"Transformers offer a key advantage – they return vectors to their original dimension n_emb. This is crucial for layering the network and ensures gradients flow backward freely, preventing vanishing/exploding gradients. Layernorm further stabilizes training by ensuring activations are normally distributed. This allows for a unidirectional flow of information, ensuring tokens only communicate with previous ones during generation."
+14,What brand of bourbon did the narrator drink?,"The narrator licked the cracks on their lips and imagined drinking oaky bourbon. They hadn’t had a drink in seven hundred and thirty days. Perry said, “We always put them on a pedestal after they died.” The narrator felt a shiver when asked about the brand of bourbon."
+14,Who is Perry and Jackie's sibling?,Perry and Jackie’s sibling is Perry. The context states “all Perry and I had was each other” and that they were “as fucked up and as co-dependent as it gets.”
+15,What colour is Nan-E?,The context doesn’t provide information about Nan-E’s color.
+15,"What does Robby, the baby, say to the Doctor?","Robby says “No, no. No, darling, we’re not…”."
+16,In what version was the velociraptor introduced?,The velociraptor was introduced in Stardew Valley 1.6.8.
+16,What was added in version 1.5.7?,"In version 1.5.7, fixes were made for several issues, including fixed graphics issues with the shipping menu, fixed out-of-bounds spawning, and fixed a multiplayer fishing softlock. Further changes were released without changing the version number, including widescreen and UHD display fixes, a crash when interacting with the Junimo notes, and a crash when interacting with the French localization for “It Howls In The Rain.”"
+17,Why did Saga stab Scratch?,"Saga stabbed Scratch because he was possessed by the Dark Presence, which was ultimately responsible for Alice’s death. After Scratch’s possession, Saga attempted to banish him from Alan’s body, but instead, Scratch possessed Casey.  Saga then stole the Clicker from Scratch, leading to his escape and subsequent attack on Saga.  Ultimately, Scratch killed Jaakko and fled, attempting to take the Clicker from Saga."
+17,What caliber is the bullet of light?,The context doesn’t state the bullet’s caliber.
+18,"In 'he who drowned the world', why did Gong Li sacrifice her brother?",The context doesn’t state why Gong Li sacrificed her brother. It focuses on the characters’ ambition and destructive actions within the alternate history of the Ming dynasty.
+18,Which book is the best?,"The provided text doesn’t explicitly state which book is the “best.” It lists several highly-recommended books within the speculative fiction category, but doesn’t rank them."
+19,Which paper by Hinton et. al. was used in this paper?,"The paper “Okapi at TREC-5” was used in the 2021 study by Hinton et al. This paper was published in 1996 by Micheline Hancock-Beaulieu, Mike Gatford, Xiangji Huang, Stephen E. Robertson, and P. W. Williams.  The study utilized papers by Ashish Vaswani, Noam M. Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, and Illia Polosukhin in 2017.  Furthermore, Wenhao Yu, Dan Iter, Shuohang Wang, Yichong Xu, Mingxuan Ju, Soumya Sanyal, Chenguang Zhu, Michael Zeng, and Meng Jiang published in 2023a.  Finally, Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, Henrique Ponde de Oliveira Pinto, Jared Kaplan, Harri Edwards, Yuri Burda, Nicholas Joseph, and Greg Brockman collaborated on the 2021 study."
+19,Why was hardware such a limiting factor in this research?,"Hardware limitations were a primary concern due to the research’s reliance on extensive datasets, restricting their ability to incorporate new information post-training. This resulted in three key challenges: subpar performance in specialized areas, difficulty identifying areas for optimization, and the potential for missed developments. The research’s reliance on broad data also hampered the incorporation of new information."
