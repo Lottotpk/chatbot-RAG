@@ -1,5 +1,5 @@
 # chatbot-RAG
-The project about chatbot using Retrieval Augmented Generation (RAG) that runs **locally**. This project try to use as few bulit-in library function as possible (so, no LangChain, Ollama, OpenAI APIs used).
+The project about chatbot using Retrieval Augmented Generation (RAG) that runs **locally**. This project try to use as few bulit-in library function as possible (no LangChain, Ollama, OpenAI APIs used).
 
 ## Requirements
 - Python version 3.12. You can check by running `python --version`
