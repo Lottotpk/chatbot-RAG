@@ -8,8 +8,24 @@ nltk.download("punkt_tab")
 device = "cuda" if torch.cuda.is_available() else "cpu"
 model_embed = SentenceTransformer("all-mpnet-base-v2", device = device)
 
-# chunk_size and chunk_overlap may need to change here for better context
+
 def txt_chunk(txt: str, chunk_size: int = 128, chunk_overlap: int = 16) -> list:
+    """Convert texts into list of multiple sentences (chunk).
+
+    Parameters
+    ----------
+    txt : string
+        The input texts to be convert into chunks
+    chunk_size : int
+        The minimum string length of each chunk
+    chunk_overlap : int
+        The overlap length between chunk
+
+    Returns
+    -------
+    list
+        The list of chunks obtained
+    """
     chunk_list = []
     sen_list = nltk.sent_tokenize(txt)
     word_len = 0
@@ -45,6 +61,18 @@ def txt_chunk(txt: str, chunk_size: int = 128, chunk_overlap: int = 16) -> list:
 
 
 def chunk_embed(chunk_list: list) -> torch.Tensor:
+    """Embed chunk into vector of certain dimensions (in this case, it is 768 dimensions).
+
+    Parameters
+    ----------
+    chunk_list : list
+        The list of chunks
+    
+    Returns
+    -------
+    torch.Tensor
+        The list of vector (vector is in torch.Tensor data type instead of numpy)
+    """
     return model_embed.encode(chunk_list, convert_to_tensor = True)
 
 
@@ -52,6 +80,24 @@ def query_retrieval(query: str,
                     vectordb: VectorDB, 
                     model: SentenceTransformer = model_embed,
                     top_k: int = 5) -> list:
+    """Retrieve the top k list of similar vector to the query.
+
+    Parameters
+    ----------
+    query : str
+        The input query from the user
+    vectordb : VectorDB
+        The vector database to search
+    model : SentenceTransformer
+        The transformer model to embed query into vector
+    top_k : int
+        The k number of returned list, default set to 5
+
+    Returns
+    -------
+    list
+        The top k-th most similar contexts to the query 
+    """
     query_vector = model.encode(query, convert_to_tensor = True)
     return vectordb.get_topk_similar(query_vector, top_k)
 

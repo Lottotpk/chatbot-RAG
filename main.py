@@ -34,6 +34,21 @@ print("Vector database successfully retrieved.")
 
 
 def prompt_format(query: str, retrieved_context: list) -> str:
+    """Format the query into the prompt for LLM to read
+    
+    Parameters
+    ----------
+    query : str
+        The user inputted query
+    retrieved_context : list
+        The list of contexts that might be similar to the query
+        This list should be obtained from get_topk_similar()
+    
+    Returns
+    -------
+    string
+        The formatted string
+    """
     formatted_cntxt =  "- " + "\n- ".join(ctxt[0] for ctxt in retrieved_context)
     prompt = f"""Use the following pieces of context to answer the question at the end.
 Pay attention to the context of the question rather than just looking for similar keywords in the corpus.
@@ -47,6 +62,21 @@ Answer:
 
 
 def output_clean(input_text: str, answer: str) -> str:
+    """The function that sanitize the string output from the LLM.
+
+    Parameters
+    ----------
+    input_text : str
+        The formatted input text, you should pass this as the return string
+        from prompt_format()
+    answer : str
+        The output answer produced by an LLM
+    
+    Returns
+    -------
+    string
+        The sanitized text from the LLM
+    """
     txt_to_remove = ["<bos>", "<eos>", "<start_of_turn>", "<end_of_turn>"]
     for rmv_txt in txt_to_remove:
         answer = answer.replace(rmv_txt, "")
@@ -54,7 +84,29 @@ def output_clean(input_text: str, answer: str) -> str:
     return answer
 
 
-def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5, guard: bool = False) -> tuple:
+def ask(input_text: str, doc_id: int = None, print_answer: bool = True, k: int = 5, guard: bool = False) -> tuple:
+    """The wrapper function for interacting between the user and LLM
+    
+    Parameters
+    ----------
+    input_text : str
+        The query input from the user
+    doc_id : int
+        The document id to lookup for, defaults to None
+        Note that this function may only used if we know what document to look for
+    print_answer : bool
+        Whether the output from the LLM should be printed out the console,
+        defaults to True
+    k : int
+        The number to indicate number of k list return contexts
+    guard : bool
+        Whether we will use the guardrails to check if the input is appropriate or not
+    
+    Returns
+    -------
+    tuple
+        The answer to the question and the related document id to the question
+    """
     if guard and not detect_appropriate(input_text):
         answer = "Sorry, I cannot provide an answer because the question contains inappropriate topics."
         print(f"Answer:\n{answer}")
@@ -106,22 +158,24 @@ def ask(input_text: str, doc_id: int = None, print_answer = True, k: int = 5, gu
 
 
 def evaluate_answer():
+    """The function to answer to question in the ./dataset and upload to ./results
+    
+    Parameters
+    ----------
+    None
+    
+    Returns
+    -------
+    None
+    """
     df = pd.read_csv("./dataset/single_passage_answer_questions.csv")
     df["llm_ans"] = pd.Series()
-    # df["similarity"] = pd.Series()
     for i in range(len(df)):
         if i % 5 == 0:
             print(f"Done answering {i} questions")
         query, doc_id = df.iloc[i]["question"], df.iloc[i]["document_index"]
         llm_ans, _ = ask(query, doc_id, False)
         df.at[i, "llm_ans"] = llm_ans
-
-        # Calculate dot product similarity
-        # actual_ans = df.iloc[i]["answer"]
-        # vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
-        # vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
-        # df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
-        #             (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
     df.to_csv("./results/single.csv", index = False)
 
     df = pd.read_csv("./dataset/multi_passage_answer_questions.csv")
@@ -131,13 +185,6 @@ def evaluate_answer():
         query, doc_id = df.iloc[i]["question"], df.iloc[i]["document_index"]
         llm_ans, _ = ask(query, doc_id, False)
         df.at[i, "llm_ans"] = llm_ans
-
-        # Calculate dot product similarity
-        # actual_ans = df.iloc[i]["answer"]
-        # vec_actual = model_embed.encode(actual_ans, convert_to_tensor = True)
-        # vec_llm = model_embed.encode(llm_ans, convert_to_tensor = True)
-        # df.at[i, "similarity"] = (torch.dot(vec_actual, vec_llm) / \
-        #             (torch.linalg.vector_norm(vec_actual) * torch.linalg.vector_norm(vec_llm))).item()
         if i % 5 == 0:
             print(f"Done answering {i} questions")
     df.to_csv("./results/multi.csv", index = False)
