@@ -8,7 +8,6 @@ The project about chatbot using Retrieval Augmented Generation (RAG) that runs *
 
 ## Files contained in this repository
 - `./database` The folder contains the saved vector database. 
-- `./dataset` The dataset to train and test the LLM.
 - `./results` The folder of the LLM's answer to the question in `./dataset`. You can see the results here in this folder to see the performance of the LLM.
 - `vectordb.py` The vector database data structure to store the content in the documents.
 - `storing_data.py` The script to load the documents, and convert them into vector database. Then, upload the vector database into `./database`.
