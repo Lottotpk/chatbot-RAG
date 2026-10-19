@@ -1,41 +1,70 @@
-# chatbot-RAG
-The project about chatbot using Retrieval Augmented Generation (RAG) that runs **locally**. This project try to use as few bulit-in library function as possible (no LangChain, Ollama, OpenAI APIs used).
+# Local RAG Chatbot from Scratch
 
-## Requirements
-- Python version 3.12. You can check by running `python --version`
-- A Huggingface account that has access to [gemma](https://huggingface.co/google/gemma-3-1b-it) and [Llama Guard](https://huggingface.co/meta-llama/Llama-Guard-3-1B).
-- Nvidia [CUDA](https://developer.nvidia.com/cuda-zone) if you want to use GPU to run the script (faster, recommended).
+A retrieval-augmented generation (RAG) chatbot that runs **fully locally** and is built without RAG frameworks: no LangChain, LlamaIndex, Ollama or hosted LLM APIs. Chunking, the vector store, retrieval, prompt assembly, guardrails and source citation are all written by hand, so each part of the pipeline can be inspected.
 
-## Files contained in this repository
-- `./database` The folder contains the saved vector database. 
-- `./results` The folder of the LLM's answer to the question in `./dataset` (not available here). You can see the results here in this folder to see the performance of the LLM.
-- `vectordb.py` The vector database data structure to store the content in the documents.
-- `storing_data.py` The script to load the documents, and convert them into vector database. Then, upload the vector database into `./database`.
-- `guardrails.py` The guardrails to filter out the inappropriate question to the LLM.
-- `main.py` The main function to ask the question with the LLM. Also, this script is used to produce the results in `./results`.
+## Architecture
 
-## To use this chatbot
-1. If you want to use [CUDA](https://developer.nvidia.com/cuda-zone), run
 ```
+documents ──► sentence-aware chunker ──► all-mpnet-base-v2 (768-d) ──► VectorDB (PyTorch tensors, .pt files)
+                                                                            │
+user question ──► Llama Guard 3 (1B) ──► embed ──► cosine top-k (k=5) ◄─────┘
+                    │ unsafe → refuse                     │
+                                                          ▼
+                                          prompt with retrieved context
+                                                          │
+                                          Gemma 3 1B-it (8-bit quantised)
+                                                          │
+                                          answer + cited document IDs / URLs
+```
+
+| Component | Implementation |
+|---|---|
+| Chunking (`storing_data.py`) | NLTK sentence splitting packed into ~128-character chunks with 16-character overlap. Sentences are never cut mid-way. |
+| Vector store (`vectordb.py`) | Custom class: tensors and metadata (document ID, source URL) saved with `torch.save`. Cosine-similarity top-k, optionally filtered to one document. |
+| Generator (`main.py`) | `google/gemma-3-1b-it` with 8-bit `bitsandbytes` quantisation. The prompt tells the model to answer only from context, say "I don't know" otherwise, and stay within five sentences. |
+| Guardrail (`guardrails.py`) | `meta-llama/Llama-Guard-3-1B` screens each question and refuses unsafe ones before retrieval |
+| Citations | Every answer lists the source documents and URLs of the retrieved chunks |
+
+## Evaluation
+
+The chatbot was run on three question sets over a 20-document corpus (the dataset is not included in this repo):
+
+| Set | Questions | What it tests | Outputs |
+|---|---|---|---|
+| Single-passage | 40 | Answer sits in one chunk | `results/single.csv` |
+| Multi-passage | 40 | Answer must be combined from several chunks | `results/multi.csv` |
+| Unanswerable | 40 | Model should abstain rather than hallucinate | `results/no.csv` |
+
+Each CSV contains the question, the reference answer (where one exists) and the model's answer.
+
+> Next step: add automatic scoring (e.g. LLM-as-judge correctness, and the abstention rate on the unanswerable set) and report the numbers here.
+
+## Setup
+
+Requires Python 3.12 and a Hugging Face account with access to [Gemma 3](https://huggingface.co/google/gemma-3-1b-it) and [Llama Guard 3](https://huggingface.co/meta-llama/Llama-Guard-3-1B). A CUDA GPU is recommended.
+
+```bash
+# GPU
 pip install -r pytorch_cuda_requirements.txt
-pip install -r requirements.txt
-```
-Otherwise, run
-```
+# or CPU
 pip install -r pytorch_cpu_requirements.txt
+
 pip install -r requirements.txt
-```
-2. Log in to the huggingface account by running
-```
 huggingface-cli login
 ```
-You need to get the API key from the website in order to get access to huggingface and LLM models.
 
-3. To chat with the chatbot, run
-```
-python main.py
-```
+| Task | Command |
+|---|---|
+| Build the vector store from `dataset/documents.csv` | `python storing_data.py` |
+| Chat (single question, guardrail on) | in `main.py`, call `main()` instead of `evaluate_answer()`, then run `python main.py` |
+| Regenerate evaluation outputs | `python main.py` |
 
-## Final thoughts
-- Note that this script only answer 1 question at a time and no follow-up questions feature has not implemented yet. 
-- You can use a better LLM model because this repo only use 1B parameters pretrained model (not enough GPU to run any bigger model...).
+## Limitations
+- One question per turn, with no conversation memory.
+- The 1B-parameter model was chosen to fit a consumer GPU. Larger models would answer multi-passage questions better.
+
+## Tech stack
+Python · PyTorch · Hugging Face Transformers · Sentence-Transformers · bitsandbytes · NLTK · pandas
+
+## License
+MIT
